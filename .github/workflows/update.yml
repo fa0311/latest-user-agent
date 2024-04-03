@@ -46,18 +46,34 @@ jobs:
       with:
         firefox-version: 'latest'
 
+    - name: Set up Xvfb
+      run: |
+        sudo apt-get install -y xvfb
 
     - name: Run Chrome
       run: |
-        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chrome --headless --timeout=3000
-
+        xvfb-run ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome --timeout=3000
+    
     - name: Run Edge
       run: |
-        ${{ steps.setup-edge.outputs.edge-path }}  http://127.0.0.1:8000/edge --headless --timeout=3000
+        xvfb-run ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge --timeout=3000
 
     - name: Run Firefox
       run: |
-        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --headless & sleep 3
+        xvfb-run ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --timeout=3000
+
+    - name: Run Headless Chrome
+      run: |
+        ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/headless-chrome --headless --timeout=3000
+
+    - name: Run Headless Edge
+      run: |
+        ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/headless-edge --headless --timeout=3000
+
+    - name: Run Headless Firefox
+      run: |
+        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/headless-firefox --headless & sleep 3
+    
 
     - name: Commit
       continue-on-error: true
