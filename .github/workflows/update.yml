@@ -68,15 +68,8 @@ jobs:
     - name: Commit
       continue-on-error: true
       run: |
-        git checkout -b ${{ github.run_id }}
-        git config --global user.email "action@github.com"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --global user.name "GitHub Action"
         git add .
         git commit -m "Update"
-        git push origin ${{ github.run_id }}
-
-    - name: Create Pull Request
-      run: |
-        gh pr create --title "Update" --body "Update" --base main --head ${{ github.run_id }}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        git push origin ${{ github.ref }}
