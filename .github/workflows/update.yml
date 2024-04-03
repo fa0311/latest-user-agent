@@ -72,4 +72,4 @@ jobs:
         git config --global user.name "GitHub Action"
         git add .
         git commit -m "Update"
-        git push origin ${{ github.ref }}
+        git push origin main
