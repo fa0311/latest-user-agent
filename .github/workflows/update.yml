@@ -54,28 +54,34 @@ jobs:
         sudo apt-get install -y xvfb
 
     - name: Run Chrome
+      continue-on-error: true
       run: |
-        timeout 3 xvfb-run ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome
+        timeout 10 xvfb-run ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome
     
     - name: Run Edge
+      continue-on-error: true
       run: |
-        timeout 3 xvfb-run ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge
+        timeout 10 xvfb-run ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge
 
     - name: Run Firefox
+      continue-on-error: true
       run: |
-        timeout 3 xvfb-run ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox
+        timeout 10 xvfb-run ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox
 
     - name: Run Headless Chrome
+      continue-on-error: true
       run: |
-        timeout 3 ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/headless-chrome --headless --timeout=3000
+        timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/headless-chrome --headless --timeout=3000
 
     - name: Run Headless Edge
+      continue-on-error: true
       run: |
-        timeout 3 ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/headless-edge --headless --timeout=3000
+        timeout 10 ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/headless-edge --headless --timeout=3000
 
     - name: Run Headless Firefox
+      continue-on-error: true
       run: |
-        timeout 3 ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/headless-firefox --headless
+        timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/headless-firefox --headless
     
 
     - name: Commit
