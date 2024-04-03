@@ -48,9 +48,9 @@ jobs:
 
     - name: Run tests
       run: |
-        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chromium-browser --headless --timeout=1000
-        ${{ steps.setup-edge.outputs.edge-path }}  http://127.0.0.1:8000/chromium-browser --headless --timeout=1000
-        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000 --headless
+        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chrome --headless --timeout=1000
+        ${{ steps.setup-edge.outputs.edge-path }}  http://127.0.0.1:8000/edge --headless --timeout=1000
+        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --headless --timeout=1000
 
     - name: Commit
       run: |
