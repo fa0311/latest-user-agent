@@ -3,13 +3,7 @@ name: FastAPI Test Workflow
 on:
   schedule:
     - cron: '0 21 * * *'
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-
+  workflow_dispatch:
 
 permissions:
   contents: write
