@@ -22,21 +22,35 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.10'
+        
+    - name: Run FastAPI server
+      run: |
+        uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
 
     - name: Set up Chrome
       uses: browser-actions/setup-chrome@v1
       id: setup-chrome
       with:
         chrome-version: 'stable'
+    
+    - name: Set up Edge
+      uses: browser-actions/setup-edge@v1
+      id: setup-edge
+      with:
+        edge-version: 'stable'
+    
+    - name: Set up Firefox
+      uses: browser-actions/setup-firefox@v1
+      id: setup-firefox
+      with:
+        firefox-version: 'latest'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
 
-    - name: Run FastAPI server
+    - name: Run tests
       run: |
-        uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
-        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chromium-browser --headress  --timeout=1000
+        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chromium-browser --headless --timeout=1000
+        ${{ steps.setup-edge.outputs.edge-path }}  http://127.0.0.1:8000/chromium-browser --headless --timeout=1000
+        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000 --headless
 
     - name: Commit
       run: |
