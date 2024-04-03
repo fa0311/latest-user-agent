@@ -18,9 +18,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        ref: main
-
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -66,8 +63,13 @@ jobs:
     - name: Commit
       continue-on-error: true
       run: |
+        git checkout -b ${{ github.run_id }}
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"
         git add .
         git commit -m "Update"
-        git push
+        git push origin ${{ github.run_id }}
+
+    - name: Create Pull Request
+      run: |
+        gh pr create --title "Update" --body "Update" --base main --head ${{ github.run_id }}
