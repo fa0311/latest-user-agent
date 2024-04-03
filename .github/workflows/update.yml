@@ -1,0 +1,69 @@
+name: FastAPI Test Workflow
+
+on:
+  schedule:
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Run FastAPI server
+      run: |
+        pip install -r requirements.txt
+        uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
+
+    - name: Set up Chrome
+      uses: browser-actions/setup-chrome@v1
+      id: setup-chrome
+      with:
+        chrome-version: 'stable'
+    
+    - name: Set up Edge
+      uses: browser-actions/setup-edge@v1
+      id: setup-edge
+      with:
+        edge-version: 'stable'
+    
+    - name: Set up Firefox
+      uses: browser-actions/setup-firefox@v1
+      id: setup-firefox
+      with:
+        firefox-version: 'latest'
+
+
+    - name: Run Chrome
+      run: |
+        ${{ steps.setup-chrome.outputs.chrome-path }}  http://127.0.0.1:8000/chrome --headless --timeout=3000
+
+    - name: Run Edge
+      run: |
+        ${{ steps.setup-edge.outputs.edge-path }}  http://127.0.0.1:8000/edge --headless --timeout=3000
+
+    - name: Run Firefox
+      run: |
+        ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --headless & sleep 3
+
+    - name: Commit
+      continue-on-error: true
+      run: |
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "GitHub Action"
+        git add .
+        git commit -m "Update"
+        git push origin main
