@@ -26,6 +26,7 @@ jobs:
         
     - name: Run FastAPI server
       run: |
+        pip install -r requirements.txt
         uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
 
     - name: Set up Chrome
@@ -60,6 +61,7 @@ jobs:
         ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --headless & sleep 3
 
     - name: Commit
+      continue-on-error: true
       run: |
         git config --global user.email "action@github.com"
         git config --global user.name "GitHub Action"

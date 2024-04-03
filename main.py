@@ -1,10 +1,14 @@
 import json
-from typing import Union
+from typing import Union 
 
-from fastapi import FastAPI, Header
+from fastapi import FastAPI, Header, HTTPException
 
 app = FastAPI()
 
+
+@app.get("/favicon.ico")
+async def write_data():
+    raise HTTPException(status_code=404)
 
 @app.get("/{key}")
 async def write_data(
