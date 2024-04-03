@@ -55,23 +55,23 @@ jobs:
 
     - name: Run Chrome
       run: |
-        xvfb-run ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome --timeout=3000
+        xvfb-run ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome --timeout=3000 & sleep 3
     
     - name: Run Edge
       run: |
-        xvfb-run ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge --timeout=3000
+        xvfb-run ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge --timeout=3000 & sleep 3
 
     - name: Run Firefox
       run: |
-        xvfb-run ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox --timeout=3000
+        xvfb-run ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox & sleep 3
 
     - name: Run Headless Chrome
       run: |
-        ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/headless-chrome --headless --timeout=3000
+        ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/headless-chrome --headless --timeout=3000 & sleep 3
 
     - name: Run Headless Edge
       run: |
-        ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/headless-edge --headless --timeout=3000
+        ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/headless-edge --headless --timeout=3000 & sleep 3
 
     - name: Run Headless Firefox
       run: |
