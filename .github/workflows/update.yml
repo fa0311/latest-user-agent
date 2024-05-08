@@ -58,43 +58,25 @@ jobs:
         echo "{}" > output.json
         echo "{}" > header.json
 
-    - name: Run Chrome
+    - name: Init Chrome
       continue-on-error: true
       run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome
-
-    - name: Run Edge
-      continue-on-error: true
+        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }}  https://www.google.com
+        
+    - name: Run
       run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge
-        timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge
-
-    - name: Run Firefox
-      continue-on-error: true
-      run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox
-        timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/fetch/firefox
-
-    - name: Run Headless Chrome
-      continue-on-error: true
-      run: |
-        timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-chrome
-        timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-chrome
-
-    - name: Run Headless Edge
-      continue-on-error: true
-      run: |
-        timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge
-        timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge
-
-    - name: Run Headless Firefox
-      continue-on-error: true
-      run: |
-        timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox
-        timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox
+        timeout 10 --preserve-status xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/fetch/firefox
+        timeout 10 --preserve-status ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-chrome
+        timeout 10 --preserve-status ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-chrome
+        timeout 10 --preserve-status ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge
+        timeout 10 --preserve-status ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge
+        timeout 10 --preserve-status ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox
+        timeout 10 --preserve-status ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox
     
 
     - name: Commit
