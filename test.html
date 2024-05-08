@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const key = "{{BROWSER_CLIENT_KEY}}";
+
+        fetch(`/${key}-fetch`);
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `/${key}-xhr`, true);
+        xhr.send();
+
+    </script>
+
+</body>
+
+</html>
