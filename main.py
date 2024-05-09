@@ -39,7 +39,4 @@ async def fetch_data(
 ):
     with open("test.html", "r") as file:
         data = file.read()
-    return HTMLResponse(
-        content=data.replace("{{BROWSER_CLIENT_KEY}}", key),
-        status_code=200,
-    )
+    return HTMLResponse(content=data, status_code=200)

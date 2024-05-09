@@ -61,7 +61,7 @@ jobs:
     - name: Init Chrome
       continue-on-error: true
       run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }}  https://www.google.com
+        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} https://www.google.com
         
     - name: Run
       run: |

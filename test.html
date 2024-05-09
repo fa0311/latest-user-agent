@@ -9,7 +9,7 @@
 
 <body>
     <script>
-        const key = "{{BROWSER_CLIENT_KEY}}";
+        const key = location.pathname.split("/").pop();
 
         fetch(`/${key}-fetch`);
 
