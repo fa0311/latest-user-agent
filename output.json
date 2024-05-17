@@ -11,9 +11,9 @@
     "headless-chrome": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.60 Safari/537.36",
     "headless-chrome-fetch": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.60 Safari/537.36",
     "headless-chrome-xhr": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/125.0.6422.60 Safari/537.36",
-    "headless-edge": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.105 Safari/537.36 HeadlessEdg/124.0.2478.105",
-    "headless-edge-fetch": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.105 Safari/537.36 HeadlessEdg/124.0.2478.105",
-    "headless-edge-xhr": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.105 Safari/537.36 HeadlessEdg/124.0.2478.105",
+    "headless-edge": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.109 Safari/537.36 HeadlessEdg/124.0.2478.109",
+    "headless-edge-fetch": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.109 Safari/537.36 HeadlessEdg/124.0.2478.109",
+    "headless-edge-xhr": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/124.0.2478.109 Safari/537.36 HeadlessEdg/124.0.2478.109",
     "headless-firefox": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0",
     "headless-firefox-fetch": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0",
     "headless-firefox-xhr": "Mozilla/5.0 (X11; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0"
