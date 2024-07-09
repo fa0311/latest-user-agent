@@ -93,8 +93,8 @@
     },
     "firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
         "connection": "keep-alive",
@@ -103,11 +103,11 @@
         "sec-fetch-mode": "navigate",
         "sec-fetch-site": "none",
         "sec-fetch-user": "?1",
-        "priority": "u=1"
+        "priority": "u=0, i"
     },
     "firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -120,7 +120,7 @@
     },
     "firefox-xhr": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -218,8 +218,8 @@
     },
     "headless-firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/png,image/svg+xml,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
         "connection": "keep-alive",
@@ -228,11 +228,11 @@
         "sec-fetch-mode": "navigate",
         "sec-fetch-site": "none",
         "sec-fetch-user": "?1",
-        "priority": "u=1"
+        "priority": "u=0, i"
     },
     "headless-firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -245,7 +245,7 @@
     },
     "headless-firefox-xhr": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:127.0) Gecko/20100101 Firefox/127.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:128.0) Gecko/20100101 Firefox/128.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
