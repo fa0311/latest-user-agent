@@ -2,7 +2,7 @@ name: update
 
 on:
   schedule:
-    - cron: '0 21 * * *'
+    - cron: "0 21 * * *"
   push:
     branches:
       - main
@@ -18,72 +18,71 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
 
-    - name: Run FastAPI server
-      run: |
-        pip install -r requirements.txt
-        uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
+      - name: Run FastAPI server
+        run: |
+          pip install -r requirements.txt
+          uvicorn main:app --host 0.0.0.0 --port 8000 & sleep 3
 
-    - name: Set up Chrome
-      uses: browser-actions/setup-chrome@v1
-      id: setup-chrome
-      with:
-        chrome-version: 'stable'
-    
-    - name: Set up Edge
-      uses: browser-actions/setup-edge@v1
-      id: setup-edge
-      with:
-        edge-version: 'stable'
-    
-    - name: Set up Firefox
-      uses: browser-actions/setup-firefox@v1
-      id: setup-firefox
-      with:
-        firefox-version: 'latest'
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+        with:
+          chrome-version: "stable"
 
-    - name: Set up Xvfb
-      run: |
-        sudo apt-get install -y xvfb
+      # - name: Set up Edge
+      #   uses: browser-actions/setup-edge@v1
+      #   id: setup-edge
+      #   with:
+      #     edge-version: 'stable'
 
-    - name: Remove json
-      run: |
-        echo "{}" > output.json
-        echo "{}" > header.json
+      - name: Set up Firefox
+        uses: browser-actions/setup-firefox@v1
+        id: setup-firefox
+        with:
+          firefox-version: "latest"
 
-    - name: Init Chrome
-      continue-on-error: true
-      run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} https://www.google.com
-        
-    - name: Run
-      run: |
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome || true
-        timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome || true
-        timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge || true
-        timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge || true
-        timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox || true
-        timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/fetch/firefox || true
-        timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-chrome || true
-        timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-chrome || true
-        timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge || true
-        timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge || true
-        timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox || true
-        timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox || true
-    
+      - name: Set up Xvfb
+        run: |
+          sudo apt-get install -y xvfb
 
-    - name: Commit
-      continue-on-error: true
-      run: |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "GitHub Action"
-        git add .
-        git commit -m "Update"
-        git push origin main
+      - name: Remove json
+        run: |
+          echo "{}" > output.json
+          echo "{}" > header.json
+
+      - name: Init Chrome
+        continue-on-error: true
+        run: |
+          timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} https://www.google.com
+
+      - name: Run
+        run: |
+          timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome || true
+          timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome || true
+          : # timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge || true
+          : # timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge || true
+          timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox || true
+          timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/fetch/firefox || true
+          timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-chrome || true
+          timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-chrome || true
+          : # timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge || true
+          : # timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge || true
+          timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox || true
+          timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox || true
+
+      - name: Commit
+        continue-on-error: true
+        run: |
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "GitHub Action"
+          git add .
+          git commit -m "Update"
+          git push origin main
