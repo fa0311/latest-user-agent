@@ -78,6 +78,10 @@ jobs:
           timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox || true
           timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox || true
 
+      - name: Check
+        run: |
+          python -c "import json; assert len(json.load(open('output.json'))) == 12"
+
       - name: Commit
         continue-on-error: true
         run: |
