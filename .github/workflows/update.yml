@@ -37,11 +37,11 @@ jobs:
         with:
           chrome-version: "stable"
 
-      # - name: Set up Edge
-      #   uses: browser-actions/setup-edge@v1
-      #   id: setup-edge
-      #   with:
-      #     edge-version: 'stable'
+      - name: Set up Edge
+        uses: browser-actions/setup-edge@v1
+        id: setup-edge
+        with:
+          edge-version: 'stable'
 
       - name: Set up Firefox
         uses: browser-actions/setup-firefox@v1
@@ -67,14 +67,14 @@ jobs:
         run: |
           timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/chrome || true
           timeout 10 xvfb-run -a ${{ steps.setup-chrome.outputs.chrome-path }} http://127.0.0.1:8000/fetch/chrome || true
-          : # timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge || true
-          : # timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge || true
+          timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/edge || true
+          timeout 10 xvfb-run -a ${{ steps.setup-edge.outputs.edge-path }} http://127.0.0.1:8000/fetch/edge || true
           timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/firefox || true
           timeout 10 xvfb-run -a ${{ steps.setup-firefox.outputs.firefox-path }} http://127.0.0.1:8000/fetch/firefox || true
           timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-chrome || true
           timeout 10 ${{ steps.setup-chrome.outputs.chrome-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-chrome || true
-          : # timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge || true
-          : # timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge || true
+          timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/headless-edge || true
+          timeout 10 ${{ steps.setup-edge.outputs.edge-path }} --headless --timeout=10000 http://127.0.0.1:8000/fetch/headless-edge || true
           timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/headless-firefox || true
           timeout 10 ${{ steps.setup-firefox.outputs.firefox-path }} --headless http://127.0.0.1:8000/fetch/headless-firefox || true
 
