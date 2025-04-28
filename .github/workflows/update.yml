@@ -80,6 +80,7 @@ jobs:
 
       - name: Check
         run: |
+          python -c "import json; print(json.load(open('output.json')))"
           python -c "import json; assert len(json.load(open('output.json'))) == 12"
 
       - name: Commit
