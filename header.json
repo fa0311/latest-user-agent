@@ -93,7 +93,7 @@
     },
     "firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -107,7 +107,7 @@
     },
     "firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -120,7 +120,7 @@
     },
     "firefox-xhr": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -224,7 +224,7 @@
     },
     "headless-firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -238,7 +238,7 @@
     },
     "headless-firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -251,7 +251,7 @@
     },
     "headless-firefox-xhr": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:142.0) Gecko/20100101 Firefox/142.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
