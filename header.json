@@ -93,7 +93,7 @@
     },
     "firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -105,9 +105,21 @@
         "sec-fetch-user": "?1",
         "priority": "u=0, i"
     },
+    "firefox-xhr": {
+        "host": "127.0.0.1:8000",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
+        "accept": "*/*",
+        "accept-language": "en-US,en;q=0.5",
+        "accept-encoding": "gzip, deflate, br, zstd",
+        "connection": "keep-alive",
+        "referer": "http://127.0.0.1:8000/fetch/firefox",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin"
+    },
     "firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -117,18 +129,6 @@
         "sec-fetch-mode": "cors",
         "sec-fetch-site": "same-origin",
         "priority": "u=4"
-    },
-    "firefox-xhr": {
-        "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "http://127.0.0.1:8000/fetch/firefox",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin"
     },
     "headless-chrome": {
         "host": "127.0.0.1:8000",
@@ -224,7 +224,7 @@
     },
     "headless-firefox": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
         "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -236,9 +236,21 @@
         "sec-fetch-user": "?1",
         "priority": "u=0, i"
     },
+    "headless-firefox-xhr": {
+        "host": "127.0.0.1:8000",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
+        "accept": "*/*",
+        "accept-language": "en-US,en;q=0.5",
+        "accept-encoding": "gzip, deflate, br, zstd",
+        "connection": "keep-alive",
+        "referer": "http://127.0.0.1:8000/fetch/headless-firefox",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin"
+    },
     "headless-firefox-fetch": {
         "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0",
         "accept": "*/*",
         "accept-language": "en-US,en;q=0.5",
         "accept-encoding": "gzip, deflate, br, zstd",
@@ -248,17 +260,5 @@
         "sec-fetch-mode": "cors",
         "sec-fetch-site": "same-origin",
         "priority": "u=4"
-    },
-    "headless-firefox-xhr": {
-        "host": "127.0.0.1:8000",
-        "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:143.0) Gecko/20100101 Firefox/143.0",
-        "accept": "*/*",
-        "accept-language": "en-US,en;q=0.5",
-        "accept-encoding": "gzip, deflate, br, zstd",
-        "connection": "keep-alive",
-        "referer": "http://127.0.0.1:8000/fetch/headless-firefox",
-        "sec-fetch-dest": "empty",
-        "sec-fetch-mode": "cors",
-        "sec-fetch-site": "same-origin"
     }
 }
