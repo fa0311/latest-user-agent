@@ -15,7 +15,7 @@
         "accept-encoding": "gzip, deflate, br, zstd",
         "accept-language": "en-US,en;q=0.9"
     },
-    "chrome-xhr": {
+    "chrome-fetch": {
         "host": "127.0.0.1:8000",
         "connection": "keep-alive",
         "sec-ch-ua-platform": "\"Linux\"",
@@ -30,7 +30,7 @@
         "accept-encoding": "gzip, deflate, br, zstd",
         "accept-language": "en-US,en;q=0.9"
     },
-    "chrome-fetch": {
+    "chrome-xhr": {
         "host": "127.0.0.1:8000",
         "connection": "keep-alive",
         "sec-ch-ua-platform": "\"Linux\"",
