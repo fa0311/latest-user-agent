@@ -68,21 +68,39 @@ if (process.platform === "darwin") {
   });
 }
 
+const collect = async (target: Target) => {
+  const driver = await target.driver();
+  try {
+    const capabilities = await driver.getCapabilities();
+    console.log(`  driver ready: ${target.key} (${capabilities.getBrowserVersion()})`);
+    const [top] = await Promise.all([wait(), driver.get(`${base}`)]);
+    const [fetched] = await Promise.all([wait(), driver.get(`${base}/fetch`)]);
+    const [xhr] = await Promise.all([wait(), driver.get(`${base}/xhr`)]);
+    return { top, fetched, xhr };
+  } finally {
+    await driver.quit().catch(() => {});
+  }
+};
+
+const retries = 3;
 const headers: [string, Record<string, string>][] = [];
 for (const target of targets) {
   console.log(`running: ${target.key}`);
-  const driver = await target.driver();
-  const capabilities = await driver.getCapabilities();
-  console.log(`  driver ready: ${target.key} (${capabilities.getBrowserVersion()})`);
-  const [top] = await Promise.all([wait(), driver.get(`${base}`)]);
-  const [fetched] = await Promise.all([wait(), driver.get(`${base}/fetch`)]);
-  const [xhr] = await Promise.all([wait(), driver.get(`${base}/xhr`)]);
-  await driver.quit();
-  headers.push(
-    [target.key, top],
-    [`${target.key}-fetch`, fetched],
-    [`${target.key}-xhr`, xhr],
-  );
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const { top, fetched, xhr } = await collect(target);
+      headers.push(
+        [target.key, top],
+        [`${target.key}-fetch`, fetched],
+        [`${target.key}-xhr`, xhr],
+      );
+      break;
+    } catch (e) {
+      client.removeAllListeners("data");
+      console.warn(`  attempt ${attempt}/${retries} failed for ${target.key}: ${e}`);
+      if (attempt === retries && !target.optional) throw e;
+    }
+  }
 }
 
 close();
